@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
+  <span>
+    Ecommerce
+  </span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Meu Perfil</button>
+  <button mat-button>Lista de Produtos</button>
+  <button mat-button>Cadastrar Produtos</button>
+  <button mat-button>Início</button>
+
+  <button mat-button (click)="onLogout()" *ngIf="isLoggedIn$ | async">Sair</button>
+</mat-toolbar>
