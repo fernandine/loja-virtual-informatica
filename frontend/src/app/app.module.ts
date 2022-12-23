@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, Input } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,12 +20,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { ProductFormComponent } from './ecommerce/products/product-form/product-form.component';
+import { ProductListComponent } from './ecommerce/products/product-list/product-list.component';
+
 import { AuthService } from './ecommerce/services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import { ProductFormComponent } from './ecommerce/product-form/product-form.component';
-import { ProductListComponent } from './ecommerce/product-list/product-list.component';
 import { ProductsDeactivateGuard } from './guards/products-deactivate.guard';
-
+import { PageNotFoundComponent } from './ecommerce/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { ProductsDeactivateGuard } from './guards/products-deactivate.guard';
     RegisterComponent,
     HeaderComponent,
     ProductFormComponent,
-    ProductListComponent
+    ProductListComponent,
+    PageNotFoundComponent,
+
 
   ],
   imports: [
@@ -55,9 +58,13 @@ import { ProductsDeactivateGuard } from './guards/products-deactivate.guard';
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
+
   ],
-  providers: [AuthGuard, AuthService, ProductsDeactivateGuard],
-  bootstrap: [AppComponent]
+  providers: [ AuthGuard, ProductsDeactivateGuard, AuthService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { Login } from '../../authentication/model/login';
+import { Login } from '../models/login';
 
 
 @Injectable()
 export class AuthService {
+
+private apiUrl = "http://localhost:8080/";
+
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {

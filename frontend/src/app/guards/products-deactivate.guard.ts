@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
-import { ProductFormComponent } from '../ecommerce/product-form/product-form.component';
+import { ProductFormComponent } from '../ecommerce/products/product-form/product-form.component';
 
 @Injectable()
 export class ProductsDeactivateGuard implements CanDeactivate<ProductFormComponent> {
