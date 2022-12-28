@@ -1,0 +1,17 @@
+<mat-card>
+    <section class="row">
+      <div class="col-lg-3" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: paginaAtual };">
+        <div class="productBox" >
+          <img mat-card-image src="{{ product.imgUrl }}">
+          <mat-card-content>
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.price | currency: 'BRL'}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Fazer Pedido</button>
+        </mat-card-actions>
+        </div>
+    </div>
+    </section>
+  </mat-card>
+  <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>

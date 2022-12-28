@@ -1,33 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Login } from '../models/login';
+import { map } from 'rxjs';
 
 
 @Injectable()
 export class AuthService {
 
-private apiUrl = "http://localhost:8080/";
+private apiUrl = 'oauth/login';
+  isLoggedIn: any;
 
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  constructor( private http: HttpClient ) {}
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
-
-  constructor(
-    private router: Router
-  ) {}
-
-  login(login: Login) {
-    if (login.email !== '' && login.password !== '' ) {
-      this.loggedIn.next(true);
-      this.router.navigate(['/']);
-    }
-  }
-
-  logout() {
-    this.loggedIn.next(false);
-    this.router.navigate(['/auth/login']);
-  }
+  login(email: string, password: string) {
+    return this.http.post<Login>(`${this.apiUrl}`, { email, password })
+        .pipe(map((login: any) => {
+            return login;
+        }));
+}
 }

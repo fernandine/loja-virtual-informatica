@@ -3,7 +3,6 @@ package com.jean.ecommerce.services;
 import com.jean.ecommerce.dtos.RoleDto;
 import com.jean.ecommerce.dtos.UserDto;
 import com.jean.ecommerce.dtos.UserInsertDto;
-import com.jean.ecommerce.dtos.UserUpdateDto;
 import com.jean.ecommerce.entities.Role;
 import com.jean.ecommerce.entities.User;
 import com.jean.ecommerce.repositories.RoleRepository;
@@ -17,10 +16,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,12 +27,12 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {//implements UserDetailsService {
 
     private static Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository repository;
@@ -58,13 +57,13 @@ public class UserService implements UserDetailsService {
     public UserDto insert(UserInsertDto dto) {
         User entity = new User();
         copyDtoToEntity(dto, entity);
-        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+        //entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         entity = repository.save(entity);
         return new UserDto(entity);
     }
 
     @Transactional
-    public UserDto update(Long id, UserUpdateDto dto) {
+    public UserDto update(Long id, UserInsertDto dto) {
         try {
             User entity = repository.getReferenceById(id);
             copyDtoToEntity(dto, entity);
@@ -99,7 +98,7 @@ public class UserService implements UserDetailsService {
             entity.getRoles().add(role);
         }
     }
-
+/*
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -110,5 +109,5 @@ public class UserService implements UserDetailsService {
         }
         logger.info("User found: " + username);
         return user;
-    }
+    }*/
 }

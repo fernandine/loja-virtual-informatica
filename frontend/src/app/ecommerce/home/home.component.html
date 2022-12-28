@@ -1,1 +1,54 @@
-<p>home works!</p>
+  <!--Slider-->
+    <section class="py-xl-0">
+                <div class="row" >
+                  <img class="img-slide" src="../../../assets/img/headset.png" alt="Slide headset"/>
+                        <div class="col-md-6 col-xl-5 offset-md-3">
+                            <div class="text-position" >
+                                <h1 class="text-uppercase fw-bold">Biben dum<br />fringi dictum, augue purus</h1>
+                                <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Confira!</a>
+                            </div>
+                        </div>
+                    </div>
+         </section>
+  <!--/Slider-->
+
+  <!--Call to action-->
+<section class="py-4 py-xl-5">
+  <div class="container">
+    <div
+      class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5"
+    >
+      <div class="pb-2 pb-lg-1">
+        <h2 class="fw-bold mb-2">Biben dum fringi dictum, augue purus</h2>
+        <p class="mb-0">
+          Imperdiet consectetur dolor, tristique himenaeos ultrices tristique
+          neque.
+        </p>
+      </div>
+      <div class="my-2">
+        <a class="btn btn-light fs-5 py-2 px-4" role="button" href="#"
+          >Button</a>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--/Call to action-->
+
+<!--Product List-->
+<mat-card>
+  <section class="row">
+    <div class="col-lg-3" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: paginaAtual };">
+      <div class="productBox" >
+        <img mat-card-image src="{{ product.imgUrl }}">
+        <mat-card-content>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price | currency: 'BRL'}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Fazer Pedido</button>
+      </mat-card-actions>
+      </div>
+  </div>
+  </section>
+</mat-card>
+<!--/Product List-->

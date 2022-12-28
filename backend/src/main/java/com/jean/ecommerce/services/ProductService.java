@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -23,9 +25,9 @@ public class ProductService {
     private ProductRepository productRepository;
 
     @Transactional(readOnly = true)
-    public Page<ProductDto> findAll(Pageable pageable) {
-        Page<Product> result = productRepository.findAll(pageable);
-        return result.map(x -> new ProductDto(x));
+    public List<ProductDto> findAll() {
+        List<Product> list = productRepository.findAll();
+        return list.stream().map(x -> new ProductDto(x)).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
