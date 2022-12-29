@@ -31,6 +31,7 @@ import { AuthGuard } from './guards/auth.guard';
     PageNotFoundComponent,
     NavbarComponent,
     FooterComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product';
 import { ProductService } from '../services/product.service';
 
@@ -11,8 +12,9 @@ export class HomeComponent implements OnInit {
 
    products: Product[] = [];
    public paginaAtual = 1;
-   
-  constructor(private service: ProductService) {}
+
+  constructor(private service: ProductService,
+    private route: ActivatedRoute ) {}
 
   ngOnInit() {
     this.getProduct();
@@ -23,4 +25,5 @@ export class HomeComponent implements OnInit {
       this.products = api;
     });
   }
-}
+
+  }

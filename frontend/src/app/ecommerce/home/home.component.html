@@ -45,7 +45,8 @@
         <p>{{ product.price | currency: 'BRL'}}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary">Fazer Pedido</button>
+        <button mat-raised-button color="primary"
+         [routerLink]="['/products/', product.id]">Detalhes</button>
       </mat-card-actions>
       </div>
   </div>
