@@ -1,5 +1,6 @@
 package com.jean.ecommerce.dtos;
 
+import com.jean.ecommerce.entities.Order;
 import com.jean.ecommerce.enums.OrderStatus;
 
 import java.time.Instant;
@@ -17,6 +18,12 @@ public class OrderDto {
         this.id = id;
         this.moment = moment;
         this.status = status;
+    }
+
+    public OrderDto(Order entity) {
+        id = entity.getId();
+        moment = entity.getMoment();
+        status = entity.getStatus();
     }
 
     public Long getId() {

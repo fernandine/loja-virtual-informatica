@@ -1,6 +1,7 @@
 package com.jean.ecommerce.services;
 
 import com.jean.ecommerce.dtos.ProductDto;
+import com.jean.ecommerce.entities.Order;
 import com.jean.ecommerce.entities.Product;
 import com.jean.ecommerce.repositories.ProductRepository;
 import com.jean.ecommerce.services.exceptions.DatabaseException;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,7 +34,8 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductDto findById(Long id) {
-        Product product = productRepository.findById(id).orElseThrow(
+        Optional<Product> obj = productRepository.findById(id);
+        Product product = obj.orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found!"));
         return new ProductDto(product);
     }

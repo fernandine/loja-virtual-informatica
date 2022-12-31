@@ -4,10 +4,7 @@ import com.jean.ecommerce.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_order")
@@ -100,5 +97,6 @@ public class Order {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
 

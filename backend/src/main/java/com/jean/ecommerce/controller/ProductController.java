@@ -1,6 +1,7 @@
 package com.jean.ecommerce.controller;
 
 import com.jean.ecommerce.dtos.ProductDto;
+import com.jean.ecommerce.entities.OrderItem;
 import com.jean.ecommerce.entities.Product;
 import com.jean.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

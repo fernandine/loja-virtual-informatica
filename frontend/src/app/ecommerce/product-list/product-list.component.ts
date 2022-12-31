@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductService } from '../services/product.service';
 
@@ -12,6 +12,12 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   public paginaAtual = 1;
 
+  @Output() cartUpdated = new EventEmitter<{
+    productId: number,
+    productName: string,
+    productPrice: number
+  }>();
+
   constructor(private service: ProductService) {}
 
   ngOnInit() {
@@ -23,5 +29,15 @@ export class ProductListComponent implements OnInit {
       this.products = res;
     });
   }
+
+  onCartUpdated(event: { target: { getAttribute: (arg0: string) => any; }; }) {
+    const id = event.target.getAttribute('id');
+    const index = this.products.findIndex(elem => elem.id == id);
+    this.cartUpdated.emit({
+        productId: this.products[index].id,
+        productName: this.products[index].name,
+        productPrice: this.products[index].price
+      });
+}
 
 }

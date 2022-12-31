@@ -9,15 +9,21 @@ import { PageNotFoundComponent } from './ecommerce/page-not-found/page-not-found
 import { ProductListComponent } from './ecommerce/product-list/product-list.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProductDetailComponent } from './ecommerce/product-detail/product-detail.component';
+import { ShoppingCartComponent } from './orders/shopping-cart/shopping-cart.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AreaAdminComponent, canActivate: [AuthGuard] },
-  { path: 'oauth/token',component: LoginComponent /*resolve: { course: CourseResolver }*/ },
+  { path: 'oauth/token',component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'products', component: ProductListComponent /*resolve: { course: CourseResolver }*/ },
-  { path: 'products/:id', component: ProductDetailComponent /*resolve: { course: CourseResolver }*/ },
-  { path: 'users', component: RegisterComponent /*resolve: { course: CourseResolver }*/ },
+  { path: 'products', component: ProductListComponent,
+  children: [
+    { path: 'cart', component: ShoppingCartComponent },
+    ],
+  },
+  { path: 'products/:id', component: ProductDetailComponent },
+  { path: 'users', component: RegisterComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: PageNotFoundComponent },
 ];

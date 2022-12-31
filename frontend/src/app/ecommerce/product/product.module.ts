@@ -11,14 +11,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HomeComponent } from '../home/home.component';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductListComponent } from '../product-list/product-list.component';
-
+import { ShoppingCartComponent } from '../../orders/shopping-cart/shopping-cart.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     ProductDetailComponent,
     ProductListComponent,
     HomeComponent,
-    
+    ShoppingCartComponent,
 
   ],
   imports: [
@@ -29,8 +30,10 @@ import { ProductListComponent } from '../product-list/product-list.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
-    
+    RouterModule,
+    MatTableModule,
+
+
   ],
 })
 export class ProductModule { }

@@ -1,5 +1,7 @@
 package com.jean.ecommerce.dtos;
 
+import com.jean.ecommerce.entities.Cart;
+import com.jean.ecommerce.entities.Order;
 import com.jean.ecommerce.entities.Product;
 
 import javax.persistence.Column;

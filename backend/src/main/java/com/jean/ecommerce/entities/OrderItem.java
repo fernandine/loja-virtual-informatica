@@ -1,5 +1,7 @@
 package com.jean.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,8 +11,12 @@ import javax.persistence.Table;
 public class OrderItem {
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
+
+    private String name;
     private Integer quantity;
     private Double price;
+
+    private Double total;
 
     public OrderItem() {
     }
@@ -18,8 +24,10 @@ public class OrderItem {
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
         id.setOrder(order);
         id.setProduct(product);
+        this.name = name;
         this.quantity = quantity;
         this.price = price;
+        this.total = total;
     }
 
     public Order getOrder() {
@@ -54,4 +62,19 @@ public class OrderItem {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 }
