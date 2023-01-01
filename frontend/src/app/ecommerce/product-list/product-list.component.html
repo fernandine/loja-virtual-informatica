@@ -1,6 +1,6 @@
 <mat-card>
     <section class="row">
-      <div class="col-lg-3" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: paginaAtual };">
+      <div class="col-lg-3" *ngFor="let product of products;">
         <div class="productBox" >
           <img mat-card-image src="{{ product.imgUrl }}">
           <mat-card-content>
@@ -9,9 +9,10 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="primary" [routerLink]="['/products/', product.id]">Detalhes</button>
+          <button (click)="addToCart(product)" class="btn btn-primary btn-sm">Add to cart</button>
         </mat-card-actions>
         </div>
     </div>
     </section>
   </mat-card>
-  <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+

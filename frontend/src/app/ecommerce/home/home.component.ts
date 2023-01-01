@@ -13,17 +13,14 @@ export class HomeComponent implements OnInit {
    products: Product[] = [];
    public paginaAtual = 1;
 
-  constructor(private service: ProductService,
-    private route: ActivatedRoute ) {}
+  constructor(private service: ProductService) {}
 
   ngOnInit() {
     this.getProduct();
   }
 
   getProduct() {
-    this.service.getProduct().subscribe(api =>{
-      this.products = api;
-    });
+
   }
 
   }

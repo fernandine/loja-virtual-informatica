@@ -13,7 +13,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +30,7 @@ import { AuthGuard } from './guards/auth.guard';
     PageNotFoundComponent,
     NavbarComponent,
     FooterComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -53,7 +52,7 @@ import { AuthGuard } from './guards/auth.guard';
     AuthModule,
     MatToolbarModule,
     ProductModule,
-    NgxPaginationModule
+
 
   ],
   providers: [ AuthGuard, AuthService ],
